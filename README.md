@@ -1,35 +1,37 @@
 # Codex Skills
 
-Reusable skills for Codex.
+Reusable Agent Skills for Codex and compatible clients.
 
-## Included skill
+## `six-part-paper-review`
 
-### `six-part-paper-review`
-
-Reads academic papers and reconstructs each paper as six connected sections:
+An evidence-grounded workflow for synthesizing one or many academic papers into six connected sections:
 
 1. problem background;
 2. motivation;
 3. core idea;
-4. implementation-level method, including essential equations;
+4. implementation-level method and essential equations;
 5. experiments and what they demonstrate;
 6. conclusion.
 
-It supports five-paper pilot batches, evidence grading, main-text cutoffs before appendices and references, clickable arXiv links, JSON quality checks, and LaTeX-to-PDF delivery.
+The skill supports:
+
+- one paper, small collections, and resumable large batches;
+- PDFs, arXiv/DOI links, publication lists, and researcher homepages;
+- one or several BCP-47 output languages;
+- evidence levels, persisted evidence maps, method traces, and experiment traces;
+- versioned JSON with backward-compatible validation;
+- LaTeX/PDF or other requested delivery formats.
 
 ## Install
 
-Copy the skill directory into your Codex skills directory:
+Copy `six-part-paper-review` into a supported skills directory, or install it from this repository with a compatible skill installer. In Codex, user-scoped skills are commonly stored under `$HOME/.agents/skills`, while repository-scoped skills can live under `.agents/skills`.
+
+The skill follows the [Agent Skills specification](https://agentskills.io/specification) and OpenAI's current [skills guidance](https://developers.openai.com/codex/skills).
+
+## Deterministic helpers
 
 ```text
-~/.codex/skills/six-part-paper-review
+scripts/init_review_job.py          Create a deduplicated, resumable manifest.
+scripts/validate_six_part_json.py   Validate legacy and schema-2.0 reviews.
+scripts/merge_review_batches.py     Merge validated batches in manifest order.
 ```
-
-Restart Codex after installation so the skill is discovered.
-
-## Contents
-
-- `SKILL.md`: core workflow and output requirements.
-- `agents/openai.yaml`: UI metadata.
-- `references/`: evidence, schema, and quality-gate guidance.
-- `scripts/validate_six_part_json.py`: deterministic summary-batch validator.
