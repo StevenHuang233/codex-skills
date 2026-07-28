@@ -1,0 +1,4 @@
+interface:
+  display_name: "Six-Part Paper Review"
+  short_description: "Synthesize papers with deep methods into LaTeX/PDF"
+  default_prompt: "Use $six-part-paper-review to create a five-paper pilot with reconstructed core ideas, implementation-level methods and equations, experimental interpretation, clickable source links, and a verified LaTeX/PDF deliverable."
